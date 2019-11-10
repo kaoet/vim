@@ -43,6 +43,7 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
+command! PackStatus call minpac#status()
 " }}}
 
 " FZF command-line fuzzy finder {{{
@@ -86,4 +87,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " UltiSnips {{{
 call minpac#add('SirVer/ultisnips')
 call minpac#add('honza/vim-snippets')
+" }}}
+
+" Markdown {{{
+call minpac#add('iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } })
 " }}}
