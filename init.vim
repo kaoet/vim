@@ -80,7 +80,7 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 " }}}
 
@@ -91,4 +91,20 @@ call minpac#add('honza/vim-snippets')
 
 " Markdown {{{
 call minpac#add('iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } })
+" }}}
+
+" Indent line {{{
+call minpac#add('Yggdroot/indentLine')
+" }}}
+
+" Surround {{{
+call minpac#add('tpope/vim-surround')
+" }}}
+
+" Repeat for plugin {{{
+call minpac#add('tpope/vim-repeat')
+" }}}
+
+" Filetypes {{{
+call minpac#add('cespare/vim-toml')
 " }}}

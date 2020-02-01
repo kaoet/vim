@@ -9,6 +9,12 @@ NVIM scripts
   * Linux: `sudo apt install neovim`
   * macOS: `brew install neovim`
 * Python plugin: `pip3 install --user neovim`
+* FZF
+  * macOS
+    ```sheel
+    brew install fzf rg
+    ```
+  * Set environment variable `export FZF_DEFAULT_COMMAND='rg --files'`.
 * Node:
   * Linux: ??
   * macOS
@@ -39,3 +45,4 @@ Plugins are managed by [minpac](https://github.com/k-takata/minpac).
 * [x] coc
 * [x] easymotion
 * [x] markdown-preview
+* [x] surround
