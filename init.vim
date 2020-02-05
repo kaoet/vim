@@ -33,7 +33,6 @@ set ignorecase
 set smartcase
 " }}}}
 
-set pyxversion=3
 let mapleader = ','
 " }}}
 

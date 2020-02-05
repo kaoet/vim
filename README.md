@@ -8,7 +8,7 @@ NVIM scripts
 * Neovim
   * Linux: `sudo apt install neovim`
   * macOS: `brew install neovim`
-* Python plugin: `pip3 install --user neovim`
+* Python plugin: `pip3 install --user pynvim`
 * FZF
   * macOS
     ```sheel
