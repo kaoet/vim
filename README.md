@@ -46,6 +46,11 @@ Plugins are managed by [minpac](https://github.com/k-takata/minpac).
 * [x] base16-vim: color scheme
 * [x] Ultisnips
 * [x] coc
+  * [x] coc-rls
+  * [x] coc-ultisnips
 * [x] easymotion
 * [x] markdown-preview
+* [x] vim-table-mode
 * [x] surround
+* Filetypes
+  * [x] vim-toml

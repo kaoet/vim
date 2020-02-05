@@ -93,10 +93,12 @@ call minpac#add('honza/vim-snippets')
 
 " Markdown {{{
 call minpac#add('iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' })
+call minpac#add('dhruvasagar/vim-table-mode')
 " }}}
 
 " Indent line {{{
 call minpac#add('Yggdroot/indentLine')
+let g:indentLine_setConceal = 0
 " }}}
 
 " Surround {{{
