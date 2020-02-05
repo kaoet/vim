@@ -34,6 +34,10 @@ ln -s ~/.config/nvim ~/.vim
 
 Then open `nvim`, and type `:PackUpdate`. Check health with `:checkhealth`. Check plugins with `:PackStatus`.
 
+## Usage
+
+See [Cheatsheet](cheatsheet.md).
+
 ## Plugins
 
 Plugins are managed by [minpac](https://github.com/k-takata/minpac).
