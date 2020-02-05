@@ -10,17 +10,16 @@ NVIM scripts
   * macOS: `brew install neovim`
 * Python plugin: `pip3 install --user pynvim`
 * FZF
-  * macOS
-    ```sheel
-    brew install fzf rg
-    ```
+  * Linux: `sudo apt install fzf ripgrep`
+  * macOS: `brew install fzf ripgrep`
   * Set environment variable `export FZF_DEFAULT_COMMAND='rg --files'`.
 * Node:
   * Linux: ??
   * macOS
     ```shell
     brew install node
-    npm install -g npm@latest
+    sudo npm install -g npm@latest
+    sudo npm install -g neovim
     ```
 
 ### Setup
@@ -33,7 +32,7 @@ ln -s ~/.config/nvim/init.vim ~/.vimrc
 ln -s ~/.config/nvim ~/.vim
 ```
 
-Then open `nvim`, and type `:PackUpdate`. Check health with `:checkhealth`.
+Then open `nvim`, and type `:PackUpdate`. Check health with `:checkhealth`. Check plugins with `:PackStatus`.
 
 ## Plugins
 
