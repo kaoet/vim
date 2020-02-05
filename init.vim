@@ -1,5 +1,8 @@
 " vim:foldmethod=marker
 
+" Include local configurations, which is not managed by Git.
+runtime local.vim
+
 " Basic {{{
 
 " UI {{{
