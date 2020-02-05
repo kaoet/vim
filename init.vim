@@ -92,7 +92,7 @@ call minpac#add('honza/vim-snippets')
 " }}}
 
 " Markdown {{{
-call minpac#add('iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } })
+call minpac#add('iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' })
 " }}}
 
 " Indent line {{{
