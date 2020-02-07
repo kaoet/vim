@@ -10,6 +10,7 @@ set number
 set relativenumber
 set cursorline
 set cursorcolumn
+set hidden " Allow modified buffers to be hidden.
 " }}}
 
 " Whitespace {{{
@@ -51,7 +52,13 @@ command! PackStatus call minpac#status()
 " FZF command-line fuzzy finder {{{
 call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
-nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-e> :Buffers<CR>
+" }}}
+
+" Ranger {{{
+call minpac#add('francoiscabrol/ranger.vim')
+call minpac#add('rbgrouleff/bclose.vim')
 " }}}
 
 " Theme {{{
@@ -59,6 +66,27 @@ call minpac#add('chriskempson/base16-vim')
 if !empty(glob('~/.config/nvim/pack/minpac/start/base16-vim'))
     colorscheme base16-oceanicnext
 endif
+" }}}
+
+" Startify {{{
+call minpac#add('mhinz/vim-startify')
+" }}}
+
+" Airline {{{
+call minpac#add('vim-airline/vim-airline')
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>h <Plug>AirlineSelectPrevTab
+nmap <leader>l <Plug>AirlineSelectNextTab
 " }}}
 
 " Code Completion {{{
@@ -71,8 +99,8 @@ call minpac#add('easymotion/vim-easymotion')
 let g:EasyMotion_smartcase = 1  " Case incensitive
 
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
@@ -109,6 +137,8 @@ call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-repeat')
 " }}}
 
-" Filetypes {{{
+" Rust {{{
+call minpac#add('rust-lang/rust.vim')
 call minpac#add('cespare/vim-toml')
+let g:rustfmt_autosave = 1
 " }}}

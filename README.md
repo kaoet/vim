@@ -13,6 +13,8 @@ NVIM scripts
   * Linux: `sudo apt install fzf ripgrep`
   * macOS: `brew install fzf ripgrep`
   * Set environment variable `export FZF_DEFAULT_COMMAND='rg --files'`.
+* Ranger
+  * macOS: `brew install ranger`
 * Node:
   * Linux: ??
   * macOS
@@ -54,3 +56,5 @@ Plugins are managed by [minpac](https://github.com/k-takata/minpac).
 * [x] surround
 * Filetypes
   * [x] vim-toml
+* [x] Airline
+* [x] Ranger.vim

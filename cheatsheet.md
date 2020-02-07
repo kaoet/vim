@@ -5,26 +5,46 @@ Cheetsheet
 
 ## General
 
-| Key                                                                 | Action            |
-|---------------------------------------------------------------------|-------------------|
-| <kbd>^ Control</kbd>+<kbd>W</kbd> <kbd>^ Control</kbd>+<kbd>W</kbd> | undo newline      |
-| `zM`                                                                | close all folding |
-| `zR`                                                                | open all folding  |
-| `zo`                                                                | open folding      |
-| `zc`                                                                | close folding     |
-| `.`                                                                 | repeat            |
+| Key                         | Action                |
+|-----------------------------|-----------------------|
+| <kbd>^W</kbd> <kbd>^W</kbd> | undo newline          |
+| `zM`                        | close all folding     |
+| `zR`                        | open all folding      |
+| `zo`                        | open folding          |
+| `zc`                        | close folding         |
+| `.`                         | repeat                |
+| `%`                         | jump to matching pair |
+| <kbd>^B</kbd>               | next page             |
+| <kbd>^F</kbd>               | previous page         |
 
 ## FZF
 
-| Key                               | Action    |
-|-----------------------------------|-----------|
-| <kbd>^ Control</kbd>+<kbd>P</kbd> | Find file |
+| Key           | Action      |
+|---------------|-------------|
+| <kbd>^P</kbd> | find file   |
+| <kbd>^E</kbd> | find buffer |
+
+## Ranger.vim
+
+| Key  | Action      |
+|------|-------------|
+| `,f` | open ranger |
+
+## buffers
+
+| Key                        | Action             |
+|----------------------------|--------------------|
+| `,[1-9]`                   | go to buffer n     |
+| `,h`                       | previous buffer    |
+| `,l`                       | next buffer        |
+| <kbd>^E</kbd> <kbd>↩</kbd> | last edited buffer |
+| `:bd`                      | close buffer       |
+
 
 ## EasyMotion
 
 | Key             | Action               |
 |-----------------|----------------------|
-| `,f<char>`      | go to `<char>`       |
 | `s<char><char>` | go to `<char><char>` |
 | `,L`            | go to line           |
 | `,w`            | go to word           |
@@ -48,18 +68,19 @@ Cheetsheet
 
 ### Insert mode
 
-| Key                                                                          | Action                                   | Example                                                                 |
-|------------------------------------------------------------------------------|------------------------------------------|-------------------------------------------------------------------------|
-| <kbd>^ Control</kbd>+<kbd>S</kbd> `<what>`                                   | add a surrounding `<what>`               | <kbd>^ Control</kbd>+<kbd>S</kbd> `"`                                   |
-| <kbd>^ Control</kbd>+<kbd>S</kbd> <kbd>^ Control</kbd>+<kbd>S</kbd> `<what>` | add a surrounding `<what>` with newlines | <kbd>^ Control</kbd>+<kbd>S</kbd> <kbd>^ Control</kbd>+<kbd>S</kbd> `{` |
+| Key                                  | Action                                   | Example                         |
+|--------------------------------------|------------------------------------------|---------------------------------|
+| <kbd>^S</kbd> `<what>`               | add a surrounding `<what>`               | <kbd>^S</kbd> `"`               |
+| <kbd>^S</kbd> <kbd>^S</kbd> `<what>` | add a surrounding `<what>` with newlines | <kbd>^S</kbd> <kbd>^S</kbd> `{` |
 
 ## UltiSnips
 
-| Key                               | Action         |
-|-----------------------------------|----------------|
-| <kbd>Tab</kbd>                    | expand snippet |
-| <kbd>^ Control</kbd>+<kbd>J</kbd> | jump forward   |
-| <kbd>^ Control</kbd>+<kbd>K</kbd> | jump backward  |
+| Key             | Action         |
+|-----------------|----------------|
+| <kbd>⇥</kbd>    | expand snippet |
+| <kbd>^J</kbd>   | jump forward   |
+| <kbd>^K</kbd>   | jump backward  |
+| `:Rg <keyword>` | ripgreping     |
 
 ## VIM Table Mode
 
