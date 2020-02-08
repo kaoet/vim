@@ -19,10 +19,11 @@ Cheetsheet
 
 ## FZF
 
-| Key           | Action      |
-|---------------|-------------|
-| <kbd>^P</kbd> | find file   |
-| <kbd>^E</kbd> | find buffer |
+| Key              | Action           |
+|------------------|------------------|
+| <kbd>^P</kbd>    | find file        |
+| <kbd>^E</kbd>    | find buffer      |
+| `,` <kbd>⇥</kbd> | find key mapping |
 
 ## Ranger.vim
 
@@ -78,8 +79,8 @@ Cheetsheet
 | Key             | Action         |
 |-----------------|----------------|
 | <kbd>⇥</kbd>    | expand snippet |
-| <kbd>^J</kbd>   | jump forward   |
-| <kbd>^K</kbd>   | jump backward  |
+| <kbd>⇥</kbd>    | jump forward   |
+| <kbd>⇧⇥</kbd>   | jump backward  |
 | `:Rg <keyword>` | ripgreping     |
 
 ## VIM Table Mode

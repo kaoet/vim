@@ -54,6 +54,9 @@ call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-e> :Buffers<CR>
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 " }}}
 
 " Ranger {{{
@@ -98,10 +101,6 @@ let g:coc_global_extensions = ['coc-rls', 'coc-ultisnips']
 call minpac#add('easymotion/vim-easymotion')
 let g:EasyMotion_smartcase = 1  " Case incensitive
 
-" <Leader>f{char} to move to {char}
-" map  <Leader>f <Plug>(easymotion-bd-f)
-" nmap <Leader>f <Plug>(easymotion-overwin-f)
-
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
 
@@ -117,6 +116,9 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " UltiSnips {{{
 call minpac#add('SirVer/ultisnips')
 call minpac#add('honza/vim-snippets')
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 
 " Markdown {{{
