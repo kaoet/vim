@@ -14,6 +14,7 @@ NVIM scripts
   * macOS: `brew install fzf ripgrep`
   * Set environment variable `export FZF_DEFAULT_COMMAND='rg --files'`.
 * Ranger
+  * Linux: `sudo apt install ranger`
   * macOS: `brew install ranger`
 * Node:
   * Linux: ??

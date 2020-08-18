@@ -71,10 +71,6 @@ if !empty(glob('~/.config/nvim/pack/minpac/start/base16-vim'))
 endif
 " }}}
 
-" Startify {{{
-call minpac#add('mhinz/vim-startify')
-" }}}
-
 " Airline {{{
 call minpac#add('vim-airline/vim-airline')
 let g:airline#extensions#tabline#enabled = 1
