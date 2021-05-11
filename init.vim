@@ -5,7 +5,17 @@ runtime local.vim
 
 " Basic {{{
 
+set nocompatible
+let mapleader = ','
+
+filetype plugin indent on
+
+" Editing {{{
+set backspace=indent,eol,start
+" }}}
+
 " UI {{{
+syntax enable
 set number
 set relativenumber
 set cursorline
@@ -37,7 +47,6 @@ set ignorecase
 set smartcase
 " }}}}
 
-let mapleader = ','
 " }}}
 
 " Plugin manager {{{
@@ -65,9 +74,9 @@ call minpac#add('rbgrouleff/bclose.vim')
 " }}}
 
 " Theme {{{
-call minpac#add('chriskempson/base16-vim')
-if !empty(glob('~/.config/nvim/pack/minpac/start/base16-vim'))
-    colorscheme base16-oceanicnext
+call minpac#add('arcticicestudio/nord-vim')
+if !empty(glob('~/.config/vim/pack/minpac/start/nord-vim'))
+    colorscheme nord
 endif
 " }}}
 
@@ -90,7 +99,7 @@ nmap <leader>l <Plug>AirlineSelectNextTab
 
 " Code Completion {{{
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
-let g:coc_global_extensions = ['coc-rls', 'coc-ultisnips']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-ultisnips']
 " }}}
 
 " Easy Motion {{{
@@ -118,13 +127,12 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 
 " Markdown {{{
-call minpac#add('iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install' })
+call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
 call minpac#add('dhruvasagar/vim-table-mode')
 " }}}
 
 " Indent line {{{
 call minpac#add('Yggdroot/indentLine')
-let g:indentLine_setConceal = 0
 " }}}
 
 " Surround {{{
