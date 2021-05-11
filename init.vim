@@ -6,7 +6,6 @@ runtime local.vim
 " Basic {{{
 
 set nocompatible
-let mapleader = ','
 
 filetype plugin indent on
 
@@ -21,6 +20,7 @@ set relativenumber
 set cursorline
 set cursorcolumn
 set hidden " Allow modified buffers to be hidden.
+set noshowmode
 " }}}
 
 " Whitespace {{{
@@ -58,11 +58,47 @@ command! PackClean call minpac#clean()
 command! PackStatus call minpac#status()
 " }}}
 
+" Leader key bindings {{{
+let g:mapleader = ' '
+let g:leader_map = {}
+
+let g:leader_map['?'] = ['Maps', 'show-keybindings']
+
+" +buffer
+let g:leader_map.b = {'name': '+buffer'}
+call minpac#add('rbgrouleff/bclose.vim') " <leader>bd
+let g:leader_map.b.d = 'close-buffer'
+
+" +file
+let g:leader_map.f = {'name': '+file'}
+nnoremap <silent> <leader>fs :update<CR>
+let g:leader_map.f.s = 'save-file'
+
+" +quit
+let g:leader_map.q = {'name': '+quit'}
+nnoremap <silent> <leader>qq :quit<CR>
+let g:leader_map.q.q = 'quit'
+" }}}
+
+" Local leader key bindings {{{
+let g:maplocalleader = ','
+" }}}
+
+" Which key {{{
+call minpac#add('liuchengxu/vim-which-key')
+
+autocmd VimEnter * call which_key#register('<Space>', "g:leader_map")
+nnoremap <silent> <leader>      :<C-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader>      :<C-u>WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <localleader> :<C-u>WhichKey ','<CR>
+vnoremap <silent> <localleader> :<C-u>WhichKeyVisual ','<CR>
+" }}}
+
 " FZF command-line fuzzy finder {{{
 call minpac#add('junegunn/fzf')
 call minpac#add('junegunn/fzf.vim')
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-e> :Buffers<CR>
+let g:leader_map.b.b = ['Buffers', 'fzf-buffers']
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
@@ -70,13 +106,13 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 " Ranger {{{
 call minpac#add('francoiscabrol/ranger.vim')
-call minpac#add('rbgrouleff/bclose.vim')
+let g:ranger_map_keys = 0
 " }}}
 
 " Theme {{{
 call minpac#add('arcticicestudio/nord-vim')
 if !empty(glob('~/.config/vim/pack/minpac/start/nord-vim'))
-    colorscheme nord
+  colorscheme nord
 endif
 " }}}
 
@@ -84,17 +120,22 @@ endif
 call minpac#add('vim-airline/vim-airline')
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>b1 <Plug>AirlineSelectTab1
+nmap <leader>b2 <Plug>AirlineSelectTab2
+nmap <leader>b3 <Plug>AirlineSelectTab3
+nmap <leader>b4 <Plug>AirlineSelectTab4
+nmap <leader>b5 <Plug>AirlineSelectTab5
+nmap <leader>b6 <Plug>AirlineSelectTab6
+nmap <leader>b7 <Plug>AirlineSelectTab7
+nmap <leader>b8 <Plug>AirlineSelectTab8
+nmap <leader>b9 <Plug>AirlineSelectTab9
 nmap <leader>h <Plug>AirlineSelectPrevTab
 nmap <leader>l <Plug>AirlineSelectNextTab
+
+for s:i in range(1, 9)
+  let g:leader_map.b[s:i] = 'tab-'.s:i
+endfor
+unlet s:i
 " }}}
 
 " Code Completion {{{
@@ -104,6 +145,7 @@ let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-ultisnips']
 
 " Easy Motion {{{
 call minpac#add('easymotion/vim-easymotion')
+map <leader>m <Plug>(easymotion-prefix)
 let g:EasyMotion_smartcase = 1  " Case incensitive
 
 " s{char}{char} to move to {char}{char}
