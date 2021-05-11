@@ -19,36 +19,39 @@ Cheetsheet
 
 ## FZF
 
-| Key              | Action           |
-|------------------|------------------|
-| <kbd>^P</kbd>    | find file        |
-| <kbd>^E</kbd>    | find buffer      |
-| `,` <kbd>⇥</kbd> | find key mapping |
+| Key     | Action           |
+|---------|------------------|
+| SPC f f | find file        |
+| SPC b b | find buffer      |
+| SPC ?   | find key mapping |
 
 ## Ranger.vim
 
-| Key  | Action      |
-|------|-------------|
-| `,f` | open ranger |
+| Key     | Action      |
+|---------|-------------|
+| SPC f r | open ranger |
 
 ## buffers
 
-| Key                        | Action             |
-|----------------------------|--------------------|
-| `,[1-9]`                   | go to buffer n     |
-| `,h`                       | previous buffer    |
-| `,l`                       | next buffer        |
-| <kbd>^E</kbd> <kbd>↩</kbd> | last edited buffer |
-| `:bd`                      | close buffer       |
+| Key       | Action             |
+|-----------|--------------------|
+| SPC [1-9] | go to buffer n     |
+| SPC h     | previous buffer    |
+| SPC l     | next buffer        |
+| SPC TAB   | last edited buffer |
+| SPC b d   | close buffer       |
 
 
 ## EasyMotion
 
-| Key             | Action               |
-|-----------------|----------------------|
-| `s<char><char>` | go to `<char><char>` |
-| `,L`            | go to line           |
-| `,w`            | go to word           |
+| Key                | Action           |
+|--------------------|------------------|
+| SPC SPC w          | go forward word  |
+| SPC SPC b          | go backward word |
+| SPC SPC j          | go foward line   |
+| SPC SPC k          | go backward line |
+| SPC SPC f `<char>` | go find `<char>` |
+| SPC SPC t `<char>` | go till `<char>` |
 
 ## surround
 
