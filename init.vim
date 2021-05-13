@@ -67,16 +67,21 @@ let g:leader_map['<Tab>'] = ['<C-^>', 'previous-buffer']
 " +buffer
 let g:leader_map.b = {'name': '+buffer'}
 call minpac#add('rbgrouleff/bclose.vim') " <leader>bd
-let g:leader_map.b.d = 'close-buffer'
+let g:leader_map.b.d = 'delete-buffer'
 
 " +file
 let g:leader_map.f = {'name': '+file'}
-nnoremap <silent> <leader>fs :update<CR>
+nnoremap <silent> <leader>fs :<C-u>update<CR>
 let g:leader_map.f.s = 'save-file'
+
+" +window
+let g:leader_map.w = {'name': '+window'}
+nnoremap <silent> <leader>wd :<C-u>close<CR>
+let g:leader_map.w.d = 'delete-window'
 
 " +quit
 let g:leader_map.q = {'name': '+quit'}
-nnoremap <silent> <leader>qq :quitall<CR>
+nnoremap <silent> <leader>qq :<C-u>quitall<CR>
 let g:leader_map.q.q = 'quit-all'
 " }}}
 
@@ -117,6 +122,9 @@ let g:leader_map.f.r = ['Ranger', 'ranger']
 " NERDTree {{{
 call minpac#add('preservim/nerdtree')
 let g:leader_map.f.t = ['NERDTreeToggle', 'toggle-NERDTree']
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+      \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 " }}}
 
 " Theme {{{
@@ -129,6 +137,7 @@ endif
 " Airline {{{
 call minpac#add('vim-airline/vim-airline')
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -150,7 +159,7 @@ unlet s:i
 
 " Code Completion {{{
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
-let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-ultisnips']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-ultisnips', 'coc-go']
 " }}}
 
 " Easy Motion {{{
@@ -183,8 +192,27 @@ call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-repeat')
 " }}}
 
+" Git {{{
+call minpac#add('jreybert/vimagit')
+let g:leader_map.g = {
+      \'name': '+git',
+      \'g': ['Magit', 'magit'],
+      \}
+" }}}
+
+" YAML {{{
+" Resolve slow core YAML syntax problem.
+call minpac#add('stephpy/vim-yaml')
+let g:yaml_limit_spell = 1
+" }}}
+
 " Rust {{{
 call minpac#add('rust-lang/rust.vim')
 call minpac#add('cespare/vim-toml')
 let g:rustfmt_autosave = 1
+" }}}
+
+" Go {{{
+call minpac#add('fatih/vim-go')
+" TODO call :GoInstallBinaries
 " }}}
