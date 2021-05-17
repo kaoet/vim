@@ -34,7 +34,16 @@ set list listchars=tab:▸\ ,trail:␣,precedes:«,extends:»
 " Terminal {{{
 set lazyredraw
 set mouse=a
-set termguicolors
+if has("termguicolors")
+  " fix bug for vim
+  " set t_8f=^[[38;2;%lu;%lu;%lum
+  " set t_8b=^[[48;2;%lu;%lu;%lum
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+
+  " enable true color
+  set termguicolors
+endif
 " }}}
 
 " Folding {{{
@@ -74,6 +83,9 @@ let g:leader_map.f = {'name': '+file'}
 nnoremap <silent> <leader>fs :<C-u>update<CR>
 let g:leader_map.f.s = 'save-file'
 
+" +code
+let g:leader_map.c = {'name': '+code'}
+
 " +window
 let g:leader_map.w = {'name': '+window'}
 nnoremap <silent> <leader>wd :<C-u>close<CR>
@@ -87,6 +99,7 @@ let g:leader_map.q.q = 'quit-all'
 
 " Local leader key bindings {{{
 let g:maplocalleader = ','
+let g:localleader_map = {}
 " }}}
 
 " Which key {{{
@@ -95,6 +108,7 @@ set timeoutlen=500
 
 if !empty(glob('~/.vim/pack/minpac/start/vim-which-key'))
   autocmd VimEnter * call which_key#register('<Space>', "g:leader_map")
+  autocmd VimEnter * call which_key#register(',', "g:localleader_map")
 endif
 nnoremap <silent> <leader>      :<C-u>WhichKey '<Space>'<CR>
 vnoremap <silent> <leader>      :<C-u>WhichKeyVisual '<Space>'<CR>
@@ -127,6 +141,13 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
       \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 " }}}
 
+" NERD Commenter {{{
+call minpac#add('preservim/nerdcommenter')
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+let g:leader_map.c.c = ['<Plug>NERDCommenterToggle', 'toggle-comment']
+" }}}
+
 " Theme {{{
 call minpac#add('arcticicestudio/nord-vim')
 if !empty(glob('~/.vim/pack/minpac/start/nord-vim'))
@@ -139,20 +160,11 @@ call minpac#add('vim-airline/vim-airline')
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>h <Plug>AirlineSelectPrevTab
-nmap <leader>l <Plug>AirlineSelectNextTab
+let g:leader_map.h = ['<Plug>AirlineSelectPrevTab', 'prev-tab']
+let g:leader_map.l = ['<Plug>AirlineSelectNextTab', 'next-tab']
 
 for s:i in range(1, 9)
-  let g:leader_map[s:i] = 'tab-'.s:i
+  let g:leader_map[s:i] = ['<Plug>AirlineSelectTab'.s:i, 'tab-'.s:i]
 endfor
 unlet s:i
 " }}}
@@ -167,6 +179,12 @@ call minpac#add('easymotion/vim-easymotion')
 let g:EasyMotion_smartcase = 1  " Case incensitive
 " }}}
 
+" Choosewin {{{
+call minpac#add('t9md/vim-choosewin')
+let g:choosewin_overlay_enable = 1
+let g:leader_map.w.w = ['<Plug>(choosewin)', 'choose-window']
+" }}}
+
 " UltiSnips {{{
 call minpac#add('SirVer/ultisnips')
 call minpac#add('honza/vim-snippets')
@@ -176,8 +194,14 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 
 " Markdown {{{
-call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
+call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()', 'type': 'opt'})
 call minpac#add('dhruvasagar/vim-table-mode')
+let g:table_mode_map_prefix = '<localleader>t'
+let g:localleader_map.t = {
+      \'name': '+table-mode',
+      \'m': 'toggle-table-mode',
+      \'t': 'tableize',
+      \}
 " }}}
 
 " Indent line {{{
@@ -193,26 +217,26 @@ call minpac#add('tpope/vim-repeat')
 " }}}
 
 " Git {{{
-call minpac#add('jreybert/vimagit')
+call minpac#add('tpope/vim-fugitive')
 let g:leader_map.g = {
       \'name': '+git',
-      \'g': ['Magit', 'magit'],
+      \'g': ['Gstatus', 'git-status'],
       \}
 " }}}
 
 " YAML {{{
 " Resolve slow core YAML syntax problem.
-call minpac#add('stephpy/vim-yaml')
+call minpac#add('stephpy/vim-yaml', {'type': 'opt'})
 let g:yaml_limit_spell = 1
 " }}}
 
 " Rust {{{
-call minpac#add('rust-lang/rust.vim')
-call minpac#add('cespare/vim-toml')
+call minpac#add('rust-lang/rust.vim', {'type': 'opt'})
+call minpac#add('cespare/vim-toml', {'type': 'opt'})
 let g:rustfmt_autosave = 1
 " }}}
 
 " Go {{{
-call minpac#add('fatih/vim-go')
+call minpac#add('fatih/vim-go', {'type': 'opt'})
 " TODO call :GoInstallBinaries
 " }}}

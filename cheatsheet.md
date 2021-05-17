@@ -5,53 +5,54 @@ Cheetsheet
 
 ## General
 
-| Key                         | Action                |
-|-----------------------------|-----------------------|
-| <kbd>^W</kbd> <kbd>^W</kbd> | undo newline          |
-| `zM`                        | close all folding     |
-| `zR`                        | open all folding      |
-| `zo`                        | open folding          |
-| `zc`                        | close folding         |
-| `.`                         | repeat                |
-| `%`                         | jump to matching pair |
-| <kbd>^B</kbd>               | next page             |
-| <kbd>^F</kbd>               | previous page         |
+| Key       | Action                |
+|-----------|-----------------------|
+| `C-w C-w` | undo newline          |
+| `zM`      | close all folding     |
+| `zR`      | open all folding      |
+| `zo`      | open folding          |
+| `zc`      | close folding         |
+| `.`       | repeat                |
+| `%`       | jump to matching pair |
+| `C-b`     | next page             |
+| `C-f`     | previous page         |
+| `C-d`     | next half page        |
+| `C-u`     | previous half page    |
 
 ## FZF
 
-| Key     | Action           |
-|---------|------------------|
-| SPC f f | find file        |
-| SPC b b | find buffer      |
-| SPC ?   | find key mapping |
+| Key       | Action           |
+|-----------|------------------|
+| `SPC f f` | find file        |
+| `SPC b b` | find buffer      |
+| `SPC ?`   | find key mapping |
 
 ## Ranger.vim
 
 | Key     | Action      |
 |---------|-------------|
-| SPC f r | open ranger |
+| `SPC f r` | open ranger |
 
 ## buffers
 
-| Key       | Action             |
-|-----------|--------------------|
-| SPC [1-9] | go to buffer n     |
-| SPC h     | previous buffer    |
-| SPC l     | next buffer        |
-| SPC TAB   | last edited buffer |
-| SPC b d   | close buffer       |
-
+| Key         | Action             |
+|-------------|--------------------|
+| `SPC [1-9]` | go to buffer n     |
+| `SPC h`     | previous buffer    |
+| `SPC l`     | next buffer        |
+| `SPC TAB`   | last edited buffer |
+| `SPC b d`   | close buffer       |
 
 ## EasyMotion
 
 | Key                | Action           |
 |--------------------|------------------|
-| SPC SPC w          | go forward word  |
-| SPC SPC b          | go backward word |
-| SPC SPC j          | go foward line   |
-| SPC SPC k          | go backward line |
-| SPC SPC f `<char>` | go find `<char>` |
-| SPC SPC t `<char>` | go till `<char>` |
+| `SPC SPC w`        | go forward word  |
+| `SPC SPC b`        | go backward word |
+| `SPC SPC j`        | go foward line   |
+| `SPC SPC k`        | go backward line |
+| `SPC SPC f <char>` | go find `<char>` |
+| `SPC SPC t <char>` | go till `<char>` |
 
 ## surround
 
@@ -70,21 +71,26 @@ Cheetsheet
 |-----------|----------------------------|---------|
 | `S<what>` | add a surrounding `<what>` | `S"`    |
 
-### Insert mode
-
-| Key                                  | Action                                   | Example                         |
-|--------------------------------------|------------------------------------------|---------------------------------|
-| <kbd>^S</kbd> `<what>`               | add a surrounding `<what>`               | <kbd>^S</kbd> `"`               |
-| <kbd>^S</kbd> <kbd>^S</kbd> `<what>` | add a surrounding `<what>` with newlines | <kbd>^S</kbd> <kbd>^S</kbd> `{` |
 
 ## UltiSnips
 
 | Key             | Action         |
 |-----------------|----------------|
-| <kbd>⇥</kbd>    | expand snippet |
-| <kbd>⇥</kbd>    | jump forward   |
-| <kbd>⇧⇥</kbd>   | jump backward  |
+| `TAB`           | expand snippet |
+| `TAB`           | jump forward   |
+| `S-TAB`         | jump backward  |
 | `:Rg <keyword>` | ripgreping     |
+
+## Fugitive
+
+| Key       | Action        |
+|-----------|---------------|
+| `SPC g g` | Git status    |
+| `>`       | Expand diff   |
+| `<`       | Collapse diff |
+| `s`       | Stage diff    |
+| `u`       | Unstage diff  |
+| `X`         | discard diff  |
 
 ## VIM Table Mode
 
