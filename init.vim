@@ -16,7 +16,6 @@ set backspace=indent,eol,start
 " UI {{{
 syntax enable
 set number
-set relativenumber
 set cursorline
 set cursorcolumn
 set hidden " Allow modified buffers to be hidden.
@@ -133,14 +132,6 @@ let g:ranger_map_keys = 0
 let g:leader_map.f.r = ['Ranger', 'ranger']
 " }}}
 
-" NERDTree {{{
-call minpac#add('preservim/nerdtree')
-let g:leader_map.f.t = ['NERDTreeToggle', 'toggle-NERDTree']
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-      \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" }}}
-
 " NERD Commenter {{{
 call minpac#add('preservim/nerdcommenter')
 let g:NERDCreateDefaultMappings = 0
@@ -171,7 +162,8 @@ unlet s:i
 
 " Code Completion {{{
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
-let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-ultisnips', 'coc-go']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-ultisnips', 'coc-go', 'coc-explorer']
+let g:leader_map.f.t = [':CocCommand explorer', 'coc-explorer']
 " }}}
 
 " Easy Motion {{{

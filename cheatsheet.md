@@ -33,6 +33,12 @@ Cheetsheet
 |---------|-------------|
 | `SPC f r` | open ranger |
 
+## coc-explorer
+
+| Key       | Action |
+|-----------|--------|
+| `SPC f t` | Toggle |
+
 ## buffers
 
 | Key         | Action             |
@@ -90,7 +96,7 @@ Cheetsheet
 | `<`       | Collapse diff |
 | `s`       | Stage diff    |
 | `u`       | Unstage diff  |
-| `X`         | discard diff  |
+| `X`       | discard diff  |
 
 ## VIM Table Mode
 
